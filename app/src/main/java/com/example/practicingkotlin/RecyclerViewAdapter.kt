@@ -1,21 +1,21 @@
-package com.example.practicingkotlin
+package com.example.practicingkotlin;
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.practicingkotlin.R
 import com.example.practicingkotlin.database.TaskEntry
 import com.example.practicingkotlin.databinding.ListItemBinding
 
-
 class RecyclerViewAdapter(private val clickListener: (TaskEntry) -> Unit) :
-    RecyclerView.Adapter<MyViewHolder>() {
+        RecyclerView.Adapter<MyViewHolder>() {
     private val tasksList = ArrayList<TaskEntry>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: ListItemBinding =
-            DataBindingUtil.inflate(layoutInflater, R.layout.list_item, parent, false)
+                DataBindingUtil.inflate(layoutInflater, R.layout.list_item, parent, false)
         return MyViewHolder(binding)
     }
 
@@ -27,9 +27,10 @@ class RecyclerViewAdapter(private val clickListener: (TaskEntry) -> Unit) :
         holder.bind(tasksList[position], clickListener)
     }
 
-    fun setList(tasks: List<TaskEntry>) {
+    fun setList(taskEntries: List<TaskEntry>) {
         tasksList.clear()
-        tasksList.addAll(tasks)
+        tasksList.addAll(taskEntries)
+
     }
 
 }
